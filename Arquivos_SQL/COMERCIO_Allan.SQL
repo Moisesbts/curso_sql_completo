@@ -1270,3 +1270,6 @@ SELECT MAX(JANEIRO) AS MAXIMO_JAN, -- PROJETA O MÁXIMO DE JANEIRO
 +------------+------------+-----------+
 |  655554.75 |   12345.78 | 136689.90 |
 +------------+------------+-----------+
+
+
+SELECT 'TESTE GITHUB';
