@@ -1277,3 +1277,74 @@ SELECT 'TESTE GITHUB';
 SELECT "SEGUNDO TESTE";
 
 SELECT "COMMIT CASA";
+
+/* AGREGANDO COM SUM */
+
+SELECT SUM(JANEIRO) AS TOTAL_JANEIRO
+FROM VENDEDORES;
+
++---------------+
+| TOTAL_JANEIRO |
++---------------+
+|     820370.09 |
++---------------+
+
+
+/* AGREGANDO COM SUM APENAS PESSOAS DO SEXO FEMININNO */
+
+SELECT SEXO, SUM(JANEIRO) AS TOTAL_JANEIRO
+FROM VENDEDORES
+WHERE SEXO = "F";
+
++------+---------------+
+| SEXO | TOTAL_JANEIRO |
++------+---------------+
+| F    |     820370.09 |
++------+---------------+
+
+
+/* SOMA OS VALORES DE JANEIRO, FEVEREIRO E MARÇO EM CADA RESPECTIVA TABELA RENOMEADA */
+
+SELECT 
+		SUM(JANEIRO) AS TOTAL_JANEIRO,
+		SUM(FEVEREIRO) AS TOTAL_FEVEREIRO,
+		SUM(MARCO) AS TOTAL_MARCO
+
+FROM VENDEDORES;
+
++---------------+-----------------+-------------+
+| TOTAL_JANEIRO | TOTAL_FEVEREIRO | TOTAL_MARCO |
++---------------+-----------------+-------------+
+|    1093519.22 |       481531.62 |   512098.26 |
++---------------+-----------------+-------------+
+
+/* AGREGA OS TOTAIS DE MARÇO COM A SOMA PARA CADA SEXO */
+
+
+SELECT SEXO, SUM(MARCO) AS TOTAL_MARCO
+	FROM VENDEDORES
+	GROUP BY SEXO;
+
++------+-------------+
+| SEXO | TOTAL_MARCO |
++------+-------------+
+| F    |   303538.62 |
+| M    |   208559.63 |
++------+-------------+
+
+-- QUAL VENDEDOR VENDEU MENOS EM MARÇO (VALOR E NOME DO VENDEDOR)
+
+SELECT NOME, MIN(MARCO) AS MÍNIMO_MARCO
+	FROM VENDEDORES
+	GROUP BY MARCO;
+
++--------+---------------+
+| NOME   | MÍNIMO_MARCO  |
++--------+---------------+
+| CARLOS |      11111.66 |
++--------+---------------+
+
+-- QUAL VENDEDOR VENDEU MAIS EM MARÇO (VALOR E NOME DO VENDEDOR)
+
+SELECT NOME, MAX(MARCO) AS MÁXIMO_MARCO
+	FROM VENDEDORES;
